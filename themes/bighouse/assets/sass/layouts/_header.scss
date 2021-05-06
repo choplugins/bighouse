@@ -216,10 +216,18 @@
             color: #fff;
             background: var(--second-color) url(../images/toolbar-call.png) 10px center no-repeat;
             height: 50px;
-            padding: 8px 15px 7px 70px;
+            padding: 5px 15px 5px 70px;
             text-align: left;
             transition: 0.6s;
             animation-duration: 1s;
+            span{
+                font-size: 12px;
+                line-height: initial;
+            }
+            b{
+                font-weight: 700;
+                line-height: initial;
+            }
         }
         &__social{
             font-size: 19px;

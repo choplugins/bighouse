@@ -29,53 +29,7 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="footer-top__box">
-                            <div class="footer-top__title">BIG HOUSE</div>
-                            <ul class="footer-top__list">
-                                <li><a href="#">Giới thiệu</a></li>
-                                <li><a href="#">Tuyển dụng</a></li>
-                                <li><a href="#">Góp ý</a></li>
-                                <li><a href="#">Liên hệ</a></li>
-                                <li><a href="#">Bản đồ chỉ dẫn</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="footer-top__box">
-                            <div class="footer-top__title">Chính sách & Quy định</div>
-                            <ul class="footer-top__list">
-                                <li><a href="#">Chính sách bảo mật</a></li>
-                                <li><a href="#">Chính sách vận chuyển</a></li>
-                                <li><a href="#">Chính sách bảo hành</a></li>
-                                <li><a href="#">Chính sách đổi, trả hàng</a></li>
-                                <li><a href="#">Quy định thanh toán</a></li>
-                           </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="footer-top__box">
-                            <div class="footer-top__title">Hướng dẫn sử dụng</div>
-                            <ul class="footer-top__list">
-                                <li><a href="#">Hướng dẫn mua hàng</a></li>
-                                <li><a href="#">Hướng dẫn thanh toán</a></li>
-                                <li><a href="#">Hướng dẫn sử dụng HĐĐT</a></li>
-                            </ul>                            
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="footer-top__box">
-                            <div class="footer-top__title">Tổng đài hỗ trợ</div>
-                            <ul class="footer-top__list">
-                                <li><a href="#">Bán hàng: 0869.559.495</a></li>
-                                <li><a href="#">Bảo hành: 024 668 44 779</a></li>
-                                <li><a href="#">Khiếu nại:&nbsp;0964.362.965</a></li>
-                                <li><a href="#"><i>ngoinhalonhanoi@gmail.com</i></a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php dynamic_sidebar('top-footer')?>
                 </div>
             </div>
         </div>
@@ -143,7 +97,7 @@
     <div class="backToTop show__backToTop">
         <?php echo hanzo_svg('down-arrow','18')?>
     </div>
- 
+    <?php wp_footer()?>
 
 </body>
 </html>

@@ -148,7 +148,7 @@
         <div class="container">
             <div class="nav-mb">
                 <div class="nav-mb__logo">
-                    <img src="assets/images/logo.png" alt="" class="img-fluid">
+                    <img src="<?= get_field('mobile-logo','option')?>" alt="" class="img-fluid">
                 </div>
                 <div class="nav-mb__search">
                     <form action="#">

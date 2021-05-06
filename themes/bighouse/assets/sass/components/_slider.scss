@@ -84,6 +84,26 @@
             }
         }
     }
+    .mega-menu{
+        width: 100%;
+        &>li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 20%;
+            float: left;
+            &>a{
+                color: #e43c3b;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+                display: block;
+            }
+            &>.sub-menu{
+                width: 100%;
+            }
+        }
+    }
 }
 .introNavBoxTitle {
     margin-bottom: 5px;
