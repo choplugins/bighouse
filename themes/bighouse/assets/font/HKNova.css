@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'HKNova';
+    src: url(../font/HKNova-Bold.otf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'HKNova';
+    src: url(../font/HKNova-Medium.otf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'HKNova';
+    src: url(../font/HKNova-Regular.otf);
+    font-weight: 400;
+}

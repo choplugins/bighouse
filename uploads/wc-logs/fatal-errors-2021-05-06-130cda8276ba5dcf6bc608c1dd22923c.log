@@ -1,0 +1,24 @@
+2021-05-06T10:09:08+00:00 CRITICAL require_once(): Failed opening required '/Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouseinc/HanzoTopMenuWalker.php' (include_path='.:/usr/local/Cellar/php@7.4/7.4.16/share/php@7.4/pear') in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouse/functions.php on line 3
+
+2021-05-06T10:09:20+00:00 CRITICAL require_once(): Failed opening required '/Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouseinc/HanzoTopMenuWalker.php' (include_path='.:/usr/local/Cellar/php@7.4/7.4.16/share/php@7.4/pear') in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouse/functions.php on line 3
+
+2021-05-06T10:09:39+00:00 CRITICAL Uncaught Error: Call to undefined method HanzoTopMenuWalker::walk() in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/nav-menu-template.php:608
+Stack trace:
+#0 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/nav-menu-template.php(228): walk_nav_menu_tree(Array, 0, Object(stdClass))
+#1 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouse/header.php(30): wp_nav_menu(Object(stdClass))
+#2 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/template.php(730): require_once('/Volumes/MACDAT...')
+#3 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/template.php(676): load_template('/Volumes/MACDAT...', true, Array)
+#4 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#5 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouse/index.php(1): get_header()
+#6 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/w in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/nav-menu-template.php on line 608
+
+2021-05-06T10:09:39+00:00 CRITICAL Uncaught Error: Call to undefined method HanzoTopMenuWalker::walk() in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/nav-menu-template.php:608
+Stack trace:
+#0 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/nav-menu-template.php(228): walk_nav_menu_tree(Array, 0, Object(stdClass))
+#1 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouse/header.php(30): wp_nav_menu(Object(stdClass))
+#2 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/template.php(730): require_once('/Volumes/MACDAT...')
+#3 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/template.php(676): load_template('/Volumes/MACDAT...', true, Array)
+#4 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#5 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouse/index.php(1): get_header()
+#6 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/w in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/nav-menu-template.php on line 608
+

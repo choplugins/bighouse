@@ -1,0 +1,491 @@
+.header{
+    /*------- header top ------------*/
+    &-top{
+        background-color: var(--first-color-alt);
+        color: var(--color-light);
+        height: 48px;
+        line-height: 48px;
+        overflow: hidden;
+        &__list{
+            display: flex;
+        }
+        &__left{
+            padding-left: 28px;
+            position: relative;
+            &::before{
+                content: '';
+                display: block;
+                background: url(../images/head-add.png) 0 center no-repeat;
+                width: 21px;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        &__list{
+            justify-content: flex-end;
+            li{
+                a{
+                    color: var(--color-light);
+                    font-size: 15px;
+                    display: inline-block;
+                    color: #fff;
+                    transition: 0.6s;
+                    padding: 0 10px;
+                    &:hover{
+                        background-color: var(--second-color);
+                    }
+                    &::before{
+                        content: '';
+                        display: inline-block;
+                        background-position: right center;
+                        background-repeat: no-repeat;
+                        vertical-align: middle;
+                        margin-right: 6px;
+                        margin-bottom: 4px;
+                    }
+                    &.header-top__link-2{
+                        &::before{
+                            background-image: url(../images/head-link-icon-1.png);
+                            width: 21px;
+                            height: 24px;
+                        }
+                    }
+                    &.header-top__link-3{
+                        &::before{
+                            background-image: url(../images/head-link-icon-2.png);
+                            width: 19px;
+                            height: 19px;
+                        }
+                    }
+                    &.header-top__link-4{
+                        &::before{
+                            background-image: url(../images/head-link-icon-3.png);
+                            width: 11px;
+                            height: 26px;
+                        }
+                    }
+                    &.header-top__link-5{
+                        &::before{
+                            background-image: url(../images/head-link-icon-4.png);
+                            width: 30px;
+                            height: 19px;
+                        }
+                    }
+
+                }
+            }
+        }
+    } 
+    /*------ end header top----*/
+
+    /*------ header center ------*/
+    &-center{
+        height: 157px;
+        background: var(--bg-white);
+        &__logo{
+            width: 270px;
+            text-align: center;
+        }
+        &__list{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__commit{
+            &-list{
+                width: 75%;
+                display: flex;
+                padding: 0 80px;
+            }
+            &-item{
+                align-items: center;
+                display: flex;
+                width: 25%;
+                background-position: 0;
+                font-weight: 700;
+                color: var(--first-color-alt);
+                text-transform: uppercase;
+                background-repeat: no-repeat;
+                &-1{
+                    background-image: url(../images/head-cam-ket-1.jpg);
+                    padding-left: 40px;
+                }
+                &-2{
+                    background-image: url(../images/head-cam-ket-2.jpg);
+                    padding-left: 78px;
+                }
+                &-3{
+                    background-image: url(../images/head-cam-ket-3.jpg);
+                    padding-left: 51px;
+                }
+                &-4{
+                    background-image: url(../images/head-cam-ket-4.jpg);
+                    padding-left: 55px;
+                }
+                &-5{
+                    background-image: url(../images/head-cam-ket-5.jpg);
+                    padding-left: 43px;
+                }
+            }
+        }
+        &__shortcut {
+            display: flex;
+            flex-direction: column;
+            &-item{
+                svg{
+                    fill: #fff;
+                }
+            }
+        }
+        &__shortcut-item {
+            width: 100%;
+            margin: 5px 0;
+            background: #057acb;
+            color: #fff;
+            border-radius: 4px;
+            padding: 8px 35px;
+        }
+    }
+    /*------ end header center ------*/
+
+    /*header- bottom*/
+    &-bottom{
+        background: var(--first-color-alt);
+        height: 50px;
+        margin-bottom: 10px;
+        &__nav{
+            display: flex;
+            width: 296px;
+            background: var(--second-color);
+            color: #fff;
+            height: 50px;
+            font-size: 16px;
+            padding: 8px 12px;
+            align-items: center;
+            > a{
+                color: var(--color-light);
+            }
+            svg{
+                fill: var(--color-light);
+            }
+        }
+        &__search{
+            margin: 6px 15px;
+            width: 648px;
+            position: relative;
+            input{
+                width: 100%;
+                left: 0;
+                z-index: 1;
+                border-radius: 8px;
+                padding: 0 10px;
+            }
+            button{
+                width: 50px;
+                right: 0;
+                z-index: 2;
+                border-radius: 0 8px 8px 0;
+                background: var(--second-color);
+                color: #fff;
+                font-size: 22px;
+            }
+            input, button{
+                position: absolute;
+                height: 100%;
+                top: 0;
+                border: none;
+            }
+            svg{
+                fill: var(--color-light);
+            }
+        }
+        &__contact{
+            position: absolute;
+            top: 0;
+            right: 17px;
+            max-width: 390px;
+            text-align: right;
+            display: flex;
+        }
+        &__call{
+            float: right;
+            display: block;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--second-color) url(../images/toolbar-call.png) 10px center no-repeat;
+            height: 50px;
+            padding: 8px 15px 7px 70px;
+            text-align: left;
+            transition: 0.6s;
+            animation-duration: 1s;
+        }
+        &__social{
+            font-size: 19px;
+            display: flex;
+            float: left;
+            padding-top: 5px;
+            padding-right: 10px;
+            a{
+                float: right;
+                svg{
+                    fill: var(--first-color-alt);
+                }
+            }
+            svg{
+                background: #fff;
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                color: var(--first-color-alt);
+                padding: 9px 7px;
+                margin-right: 15px;
+                transition: .4s;
+                &:hover{
+                    background: var(--second-color);
+                }
+            }
+        }
+    }
+    /* end header - bottom*/
+}
+@media (max-width:1440px){
+    .header-center__commit-list {
+        padding: 0px;
+    }
+}
+@media (max-width: 1366px){
+    .header-center__commit-item{
+        background-size: auto 30px;
+        font-size: 13px;
+    }
+    .header-bottom{
+        &__search {
+            width: 370px !important;
+        }
+    }
+}
+@media (max-width: 1200px){
+    .header-center__logo{
+        width: 110px;
+        img{
+
+        }
+    }
+    .header-center__commit-item {
+        font-size: 11px;
+        background-position: center 0;
+        padding-left: 0;
+        padding-top: 45px;
+        justify-content: center;
+    }
+}
+@media (max-width: 1024px){
+    .header-bottom{
+        &__nav{
+            width: 240px;
+        }
+        &__search {
+            width: 270px !important;
+        }
+    }
+}
+@media (max-width: 992px){
+    .header-center__commit-item{
+        font-size: 11px;
+        background-position: center 0;
+        padding-left: 0;
+        padding-top: 45px;
+        justify-content: center;
+    }
+
+    .header-bottom__call {
+        background: var(--second-color) url(../images/toolbar-call.png) 25px center no-repeat;
+        b{
+            display: none;
+        }
+        span{
+            display: none;
+        }
+    }
+}
+
+
+/* header mb */
+
+.header-mb{
+    height: 42px;
+    background-color: var(--first-color-alt);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+.nav-mb{
+    z-index: 9;
+    top: 0;
+    height: 42px;
+    left: 0;
+    background: var(--first-color-alt);
+    display: flex;
+    justify-content: space-between;
+    &__logo{
+        display: flex;
+        align-items: center;
+        img{
+            width: 90px;
+        }
+    }
+    &__search{
+        margin: 9px 0 9px 15px;
+        flex: auto;
+        position: relative;
+        input{
+            width: 100%;
+            left: 0;
+            z-index: 1;
+            border-radius: 4px;
+            border: none;
+        }
+        button{
+            width: 33px;
+            right: 0;
+            z-index: 2;
+            border-radius: 0 4px 4px 0;
+            background: var(--second-color);
+            border: none;
+            color: var(--color-light);
+            font-size: 14px;
+            position: absolute;
+            height: 21px;
+            svg{
+                fill: #fff;
+            }
+        }
+    }
+    &__toggle{
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        line-height: 9px;
+        font-size: 9px;
+        width: 42px;
+        text-transform: uppercase;
+        justify-content: center;
+        align-items: center;
+        svg{
+            fill: #fff;
+        }
+    }
+}
+
+/* menu mobile */
+.menu-mobile{
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    &-active{
+        opacity: 1;
+        visibility: visible;
+    }
+    &__list{
+        position: fixed;
+        left: 0;
+        top: 42px;
+        z-index: 100;
+        width: 100%;
+        color: var(--title-color);
+        font-size: 14px;
+        font-weight: 400;
+        height: 460px;
+        overflow: auto;
+        background: #fff;
+        >li{
+            >a{
+                width: 100px;
+                height: 50px;
+                background-color: #057acb;
+                font-size: 12px;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                padding: 10px 0px 0px 5px;
+                svg{
+                    margin-right: 5px;
+                    fill: #fff;
+                }
+            }
+        }
+    }
+    &__sub{
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-left: 102px;
+        width: calc(100% - 102px);
+        li{
+            display: none;
+        }
+        a{
+            color: #057acb;
+            margin: 15px 5px 0;
+            display: block;
+        }
+        &::after{
+            border-bottom: 1px solid #057acb;
+            margin: 10px 5px 0;
+            content: '';
+            display: block;
+            width: 100%;
+        }
+    }
+    &__mega{
+        display: grid;
+        grid-template-columns:repeat(3, 1fr);
+        >li{
+            >a{
+                display: block;
+                padding: 5px;
+                margin: 6px;
+                background: #ece9eb;
+                color: #333;
+                border-radius: 4px;
+                text-align: center;
+                font-size: 11px;
+            }
+        }
+    }
+}
+/* active link*/
+.current-menu-item{
+    li{
+        display: block;
+    }
+    >a{
+        background-color: #ece9eb !important;
+        color: #057acb !important;
+        svg{
+            fill: var(--first-color-alt) !important;
+        }
+    }
+}
+
+.toolBar {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    display: none;
+    z-index: 9;
+    max-width: 296px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    transition: .4s;
+    
+}
+.header-bottom__nav:hover .toolBar{
+    display: block;
+    transform: translateY(-20px);
+}

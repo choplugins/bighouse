@@ -1,0 +1,97 @@
+.sidebar {
+    
+    &__item{
+        position: relative;
+        background-color: var(--bg-white);
+        margin-bottom: 20px;
+    }
+    &__title{
+        font-size: 20px;
+        background-color: var(--second-color);
+        padding: 8px 15px;
+        color: var(--color-light);
+    }
+    &__list{
+        margin-top: 10px;
+        padding: 10px;
+        >li{
+            >a{
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--first-color-alt);
+            }
+        }
+        &-type{
+            margin-top: 0px;
+            li{
+                a{
+                    font-size: 17px;
+                    color: var(--title-color);
+                    font-weight: normal;
+                    text-transform: inherit;
+                    display: block;
+                    padding: 3px 0;
+                    transition: .4s;
+                    &:hover{
+                        color: var(--first-color-alt);
+                    }
+                }
+            }
+        }
+
+        &-post{
+            li{
+                margin-bottom: 5px;
+            }
+            a{
+                color: var(--first-color-alt);
+                transition: .4s;
+                &:hover{
+                    color: var(--second-color);
+                }
+            }
+            &__item{
+                display: grid;
+                grid-template-columns: 90px auto;
+                gap: 15px;
+            }
+            &__img{
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &__collapsed{
+        margin-left: 20px;
+        li{
+            a{
+                color: var(--five-color);
+                font-size: 16px;
+                transition: .4s;
+                &:hover{
+                    color: var(--first-color-alt);
+                }
+            }
+        }
+    }
+
+    &__box{
+        padding: 25px;
+    }
+    &__input-item{
+        padding: 6px 0;
+        font-size: 14px;
+        color: var(--title-color);
+        a{
+            color: var(--title-color);
+        }
+    }
+
+    &__filter{
+        &-title{
+            font-weight: 600;
+            padding: 5px 0;
+        }
+    }
+}

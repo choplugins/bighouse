@@ -1,0 +1,381 @@
+.product{
+    &-title{
+        &__sale{
+            color: #057acb;
+            font-weight: 600;
+            padding-left: 5px;
+            margin: 20px 0 10px;
+            svg{
+                fill: #057acb;
+            }
+        }
+    }
+    &__item{
+        border: 1px solid #fff;
+        position: relative;
+        display: block;
+        text-align: center;
+        padding: 10px;
+        background-color: #ffffff;
+        transition: .5s;
+        &:hover{
+            border: 1px solid var(--first-color-alt);
+        }
+        &-slider{
+            width: 20%;
+        }
+    }
+    &__discount{
+        position: absolute;
+        right: -5px;
+        top: 0;
+        background: url(../images/ipro-icon-sale.png) 0 0 no-repeat;
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+        font-size: 16px;
+    }
+    &__name{
+        font-size: 16px;
+        text-align: center;
+        color:var(--title-color);   
+        margin-bottom: 4px;
+        margin-top: 10px;
+    }
+    &__price{
+        display: flex;
+        flex-direction: column;
+        
+        ins{
+            order: -1;
+            text-decoration: none;
+            font-size: 15px;
+            color: var(--fourth-color);
+        }
+        del{
+            color: var(--title-color);
+            font-size: 13px;
+        }
+        // color: #e3007b;
+        //color: #666;
+    }
+    &__content {
+        display: inherit;
+        background-color: #fff;
+    }
+    &__list{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    /*--- brand ----*/
+    &-brand{
+        background-color: #dce5eb;
+        &__list{
+            li{
+                padding-left: 20px;
+                border-bottom: 1px solid #85bbe0;
+                transition: 0.6s;
+                a{
+                    height: 35px;
+                    line-height: 35px;
+                    color: var(--first-color);
+                    display: block;
+                    transition: 0.6s;
+                }
+
+                &:hover{
+                    background-color: var(--second-color);
+                }
+            }
+        }
+        &__img{
+            img{
+                width: 100%;
+            }
+        }
+
+    }
+    /*---end brand ----*/
+    /*---tab ---*/
+    &-tab{
+        background: #fff;
+        border-bottom: 1px solid #e3e3e3;
+        display: flex;
+        align-items: center;
+        &__title{
+            background-color: var(--second-color);
+            font-size: 22px;
+            display: inline;
+            padding: 10px 100px 10px 10px;
+            svg{
+                fill: var(--bg-white);
+            }
+            a{
+                color: var(--bg-white);
+                text-transform: uppercase;
+                
+                display: inline-block;
+            }
+        }
+        &__box{
+            position: relative;
+        }
+        &__link{
+            color: var(--first-color);
+            transition: .3s;
+            &:hover{
+                text-decoration-line: underline;
+            }
+        }
+        /* tab  mobile*/
+        &__mb{
+            &-box{
+                display: flex;
+                justify-content: space-between;
+                background: var(--first-color-alt);
+                padding: 5px;
+                align-items: center;
+                justify-items: center;
+                a{
+                    color: var(--color-light);
+                }
+            }
+            &-title{
+                font-size: 18px;
+  
+            }
+            &-list{
+                display: flex;
+                margin: 10px 0 15px;
+                li{
+                    a{
+                        background: #eee;
+                        color: #057acb;
+                        font-size: 12px;
+                        padding: 5px 5px;
+                        text-align: center;
+                        border-left: 1px solid;
+                    }
+                }
+            }
+        }
+        /* end tab mobile*/
+    }
+    /*---end tab ---*/
+    &__link-more{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+    /*-- product-type2 --*/
+    &-type2{
+        &__list{
+            width: 100%;
+            padding: 15px 0 40px;
+        }
+        &__item{
+            width: 314.4px;
+            margin-right: 15px;
+            text-align: center;
+            padding: 10px;
+        }
+        .flickity-button{
+            color: #fff;
+        }
+        .flickity-prev-next-button{
+            bottom: 0%;
+            top: unset;
+            transform: translateX(-8px);
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            background: #ccc;
+            &.previous{
+                right: 48.5%;
+                left: unset;
+            }
+            &.next{
+                left: 52%;
+            }
+        }
+    }
+    /*-- Product-type 3 --*/
+    &-type3{
+        padding: 20px  0;
+        &__title{
+            font-size: 22px;
+            color: red;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+            border-bottom: 1px solid #e3e3e3;
+            margin: 15px 0 10px;
+        }
+        .flickity-button{
+            background-color: #ccc;
+            color: #fff;
+        }
+        .flickity-prev-next-button{
+            width: 30px;
+            height: 60px;
+            border-radius: 10px;
+        }
+    }
+}
+.category{
+    &__box{
+        padding: 10px;
+        border:  1px  dashed  var(--second-color);
+        text-align: justify;
+    }
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(4 , 1fr);
+        row-gap: 20px;
+        column-gap: 40px;
+        padding: 15px 10px 5px;
+    }
+    &__item{
+        width: 100%;
+        text-align: center;
+        background-color: #efefef;
+        border: 1px dotted #ccc;
+        color: var(--title-color);
+        display: block;
+        font-weight: 600;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: .4s;
+        a{
+            color: var(--title-color);
+        }
+        &:hover{
+            background-color: var(--bg-dark);
+            a{
+                color: var(--color-light) ;
+            }
+        }
+    }
+}
+@media (min-width: 992px){
+    .no-gutters-col{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@media (max-width: 1024px){
+    .product{
+        &-tab{
+            &__title{
+                font-size: 20px;
+            }
+        }
+    }
+}
+@media (max-width: 992px){
+    .product{
+        &-tab{
+            &__title{
+                font-size: 20px;
+            }
+        }
+        &__list{
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        &__item{
+            border: 1px solid #e3e3e3;
+            padding: 0;
+            &-slider{
+                width: 32.333%;
+                margin-right: 15px;
+            }
+        }
+        &__name{
+            font-size: 14px;
+        }
+        &__price{
+            ins{
+                font-size: 14px;
+            }
+            del{
+                font-size: 12px;
+            }
+        }
+        &__discount{
+            background-size: 100%;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 12px;
+            right:5px;
+            top: 5px;
+        }
+    }
+}
+@media (max-width: 768px){
+    .product{
+        &-tab{
+            > a{
+                display: none;
+            }
+            &__title{
+                padding: 10px 30px 10px 10px;
+            }
+        }
+        &__grid{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    .category{
+        &__list{
+            grid-template-columns: repeat(2, 1fr);
+            padding: 15px 0 0;
+        }
+        &__item{
+            font-size: 13px;
+        }
+    }
+}
+@media (max-width: 576px){
+    .product{
+        &__grid{
+            display: initial;
+        }
+        &-tab{
+            &__title{
+                font-size: 15px;
+                svg{
+                    width: 10px;
+                }
+            }
+        }
+        &__link{
+            
+            &-more{
+                top: 10px;
+                font-size: 14px;
+            }
+        }
+        &__list{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &__item{
+            &-slider{
+                width: 48%;
+            }
+        }
+    }
+    .category{
+        &__list{
+            
+            column-gap: 10px;
+        }
+    }
+}

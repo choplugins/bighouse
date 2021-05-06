@@ -1,0 +1,28 @@
+.rank-math-breadcrumb{
+    width: 100%;
+    font-size: 14px;
+    margin: 0 auto;
+    background-color: var(--first-color-alt);
+    p{
+        padding: 15px 10px 15px;
+        a{
+            color: var(--color-light);
+            transition: .4s;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        span{
+            color: var(--color-light);
+        }
+    }
+}
+
+@media (max-width: 992px){
+    .rank-math-breadcrumb{
+        font-size: 11px;
+        p{
+            padding: 10px 10px 10px;
+        }
+    }
+}

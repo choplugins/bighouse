@@ -1,0 +1,40 @@
+.hazo-pagination{
+    ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        li{
+            
+            a{
+                border: 1px solid #183c30;
+                margin: 0 4px 7px;
+                display: block;
+                padding: 6px 15px;
+                background: var(--bg-white);
+                color: var(--color-text);
+                transition: .4s;
+                &:hover{
+                    background: var(--first-color-alt);
+                    color: var(--color-light);
+                }
+            }
+        }
+    }
+    .active{
+        a{
+            background: var(--first-color-alt);
+            color: var(--color-light);
+        }
+    }
+}
+@media (max-width: 576px){
+    .hazo-pagination{
+        ul{
+            li{
+                a{
+                    padding: 3px 12px;
+                }
+            }
+        }
+    }
+}

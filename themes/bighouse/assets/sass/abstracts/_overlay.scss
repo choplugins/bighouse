@@ -1,0 +1,24 @@
+.overlay{
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: #56545480;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+    
+    &-active{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+@media (max-width:992px){
+    .overlay{
+        margin-top: 42px;
+    }
+}

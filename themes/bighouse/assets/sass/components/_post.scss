@@ -1,0 +1,120 @@
+/* reset Post */
+.ws-sgct blockquote{
+    padding:10px 20px;
+    margin:0 0 20px;
+    border-left:5px solid #eb2b2d
+}
+.ws-sgct blockquote p{
+    margin:0!important
+}
+.ws-sgct code{
+    background:rgba(0,0,0,.05);
+    border-radius:3px;
+    font-size:.85rem;
+    color:#e83e8c
+}
+.ws-sgct p,.ws-sgct table{
+    margin:0 0 20px;
+    line-height:2
+}
+.ws-sgct table{
+    border:1px solid #ddd;
+    margin-bottom:30px
+}
+.ws-sgct table>tbody>tr>td,.ws-sgct table>tbody>tr>th,.ws-sgct table>tfoot>tr>td,.ws-sgct table>tfoot>tr>th,.ws-sgct table>thead>tr>td,.ws-sgct table>thead>tr>th{
+    border:1px solid #ddd;
+    padding:7px 10px
+}
+.ws-sgct h6{
+    font-size:18px
+}
+.ws-sgct h5{
+    font-size:21px
+}
+.ws-sgct h4{
+    font-size:24px
+}
+.ws-sgct h3{
+    font-size:27px
+}
+.ws-sgct h2{
+    font-size:30px
+}
+.ws-sgct ul,.ws-sgct ol {
+    margin: 0 0 20px;
+    padding-left: 55px;
+    list-style: disc;
+}
+.ws-sgct ul li,.ws-sgct ol li{
+    line-height: 1.5;
+}
+.ws-sgct ol{
+    list-style: decimal;
+}
+.ws-sgct iframe{
+    margin:auto;
+}
+.ws-sgct .syntaxhighlighter{
+    padding:10px 0;
+}
+.ws-sgct h2,.ws-sgct h3,.ws-sgct h4,.ws-sgct h5,.ws-sgct h6{
+    margin:0 0 30px;
+}
+/* end reset post */
+
+.post__item{
+    display: grid;
+    grid-template-columns: 240px auto;
+    gap: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #d8d8d8;
+    &-img{
+        img{
+            width: 100%;
+            height: 150px;
+        }
+    }
+    &-title{
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--title-color);
+        display: block;
+        margin-bottom: 10px;
+        transition: .4s;
+        &:hover{
+            color: var(--first-color-alt);
+        }
+    }
+    &-desc{
+        font-size: 16px;
+    }
+}
+@media (max-width: 992px){
+    .post__item{
+        &-title{
+            font-size: 15px;
+        }
+    }
+}
+@media (max-width: 576px){
+    .post__item{
+        padding-bottom: 0px;
+        grid-template-columns: 110px auto;
+        margin-bottom: 10px;
+        gap: 15px;
+        &-desc{
+            display: none;
+        }
+        &-title{
+            font-size: 13px;
+            color: var(--first-color-alt);
+        }
+        &-img{
+            img{
+                height: 80px;
+            }
+        }
+    }
+}
