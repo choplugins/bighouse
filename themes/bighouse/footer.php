@@ -38,51 +38,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-sm-12">
-                        <div class="footer-bottom__box">
-                            <div class="footer-bottom__logo">
-                                <img src="assets/images/head-logo.png" alt="">
-                            </div>
-                            <ul class="footer-bottom__certification">
-                                <li><img src="assets/images/ft2-1.png" alt=""></li>
-                                <li><img src="assets/images/ft2-2.png" alt=""></li>
-                                <li><img src="assets/images/dmca_protected_sml_120m.png" alt=""></li>
-                            </ul>
-                        </div>
+                        <?php dynamic_sidebar('bottom-footer-1')?>
                     </div>
                     <div class="col-lg-4 col-sm-12">
-                        <div class="footer-bottom__box">
-                            <h3 class="footer-bottom__title">BIG HOUSE HÀ NỘI</h3>
-                            <ul class="footer-bottom__list">
-                                <li>Công ty TNHH xây dựng và hạ tầng Ngôi Nhà Lớn</li>
-                                <li>Showroom 1: 97 Hoàng Quốc Việt, Quận Cầu Giấy, Hà Nội</li>
-                                <li>Showroom 2: 99 Hoàng Quốc Việt, Quận Cầu Giấy, Hà Nội</li>
-                                <li>Showroom 3: 95 Hoàng Quốc Việt, Quận Cầu Giấy, Hà Nội</li>
-                                <li>Showroom 4: C3.23 Lê Trọng Tấn, Hà Đông, Hà Nội (Coming soon)</li>
-                                <li>ĐT: 0869.559.495 - 1900.3323</li>
-                                <li>Email : ngoinhalonhanoi@gmail.com</li>
-                                <li>MST: 0101678313</li>
-                                <li>STK: 19128340076017 - NH Techcombank - CN Hoàng Quốc Việt</li>
-                                <li>Website: https://bighousevietnam.com</li>
-                            </ul>
-                            <a class="footer-bottom__link" href="#">Xem bản đồ</a>
-                        </div>
+                        <?php dynamic_sidebar('bottom-footer-2')?>
                     </div>
                     <div class="col-lg-4 col-sm-12">
-                        <div class="footer-bottom__box">
-                            <h3 class="footer-bottom__title">BIG HOUSE TP HCM</h3>
-                            <ul class="footer-bottom__list">
-                                <li>Công ty TNHH Xây dựng và Hạ tầng Ngôi Nhà Lớn</li>
-                                <li>Đ/C: 30/14 Nguyễn Văn Công, Phường 3, Quận Gò Vấp, TP HCM</li>
-                                <li>Email : ngoinhalonhanoi@gmail.com</li>
-                                <li>MST: 0101678313</li>
-                                <li>STK: 19128340076017 - NH Techcombank - CN Hoàng Quốc Việt</li>
-                                <li>ĐT: 0869.559.495 - 1900.3323</li>
-                                <li><strong><a style="color: #ff9900;" href="#" target="_blank" rel="noopener">FACEBOOK</a>&nbsp;
-                                    |                                &nbsp;
-                                    <a style="color: #ff9900;" href="#" target="_blank" rel="noopener">YOUTUBE</a></strong>
-                                </li>
-                            </ul>
-                        </div>
+                        <?php dynamic_sidebar('bottom-footer-3')?>
                     </div>
                 </div>
             </div>

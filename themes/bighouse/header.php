@@ -38,7 +38,9 @@ $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             <div class="container">
                 <div class="header-center__list">
                     <div class="header-center__logo">
+                        <a href="<?= home_url() ?>" title="<?= get_bloginfo( 'name' )?>">
                         <img src="<?= esc_url($logo[0])?>" alt="<?= get_bloginfo( 'name' )?>">
+                        </a>
                     </div>
                     <div class="header-center__commit-list">
                         <?php $header_banners = get_field('header_banner','option');

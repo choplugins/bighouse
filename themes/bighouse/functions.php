@@ -67,6 +67,33 @@ function hanzo_widgets_init() {
         'before_title'  => '<h2 class="widgettitle footer-top__title">',
         'after_title'   => '</h2>',
     ) );
+    register_sidebar( array(
+        'name'          => __( 'Bottom Footer 1', 'hanzo' ),
+        'id'            => 'bottom-footer-1',
+        'description'   => __( 'Widgets nằm trên Bottom Footer 1', 'hanzo' ),
+        'before_widget' => '<div id="%1$s" class="widget footer-bottom__box">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widgettitle footer-top__title">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name'          => __( 'Bottom Footer 2', 'hanzo' ),
+        'id'            => 'bottom-footer-2',
+        'description'   => __( 'Widgets nằm trên Bottom Footer 2', 'hanzo' ),
+        'before_widget' => '<div id="%1$s" class="widget footer-bottom__box">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widgettitle footer-top__title">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name'          => __( 'Bottom Footer 3', 'hanzo' ),
+        'id'            => 'bottom-footer-3',
+        'description'   => __( 'Widgets nằm trên Bottom Footer 3', 'hanzo' ),
+        'before_widget' => '<div id="%1$s" class="widget footer-bottom__box">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widgettitle footer-top__title">',
+        'after_title'   => '</h2>',
+    ) );
 }
 add_action( 'widgets_init', 'hanzo_widgets_init' );
 
@@ -78,4 +105,25 @@ if (function_exists('acf_add_options_page')) {
         'capability' => 'edit_posts',
         'redirect' => false
     ));
+}
+function hanzo_get_brand_from_product_category( $cat_slug, $taxonomy = 'pwb-brand' ) {
+    global $wpdb;
+
+    return $wpdb->get_results( "
+        SELECT t1.*
+        FROM    {$wpdb->prefix}terms t1
+        INNER JOIN {$wpdb->prefix}term_taxonomy tt1
+            ON  t1.term_id = tt1.term_id 
+        INNER JOIN {$wpdb->prefix}term_relationships tr1
+            ON  tt1.term_taxonomy_id = tr1.term_taxonomy_id
+        INNER JOIN {$wpdb->prefix}term_relationships tr2
+            ON  tr1.object_id = tr2.object_id
+        INNER JOIN {$wpdb->prefix}term_taxonomy tt2
+            ON  tr2.term_taxonomy_id = tt2.term_taxonomy_id         
+        INNER JOIN {$wpdb->prefix}terms t2
+            ON  tt2.term_id = t2.term_id
+        WHERE tt1.taxonomy = 'product_cat'
+        AND tt2.taxonomy = '$taxonomy'
+        AND  t2.slug = '$cat_slug'
+    " );
 }

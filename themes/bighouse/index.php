@@ -47,16 +47,14 @@
     <section class="silder-mb  d-lg-none d-md-block">
         <div class="slider__data">
             <div class="slider__list " data-flickity='{"wrapAround": true , "prevNextButtons": false, "pageDots": false }'>
+                <?php if(!empty($home_slider)):foreach ($home_slider as $slider):
+                ?>
                 <div class="slider__item">
-                    <a href="#">
-                        <img style="width: 100%; height: 100%;" src="assets/images/BocThamMienPhi_1025x511.jpg" alt="">
+                    <a href="<?= $slider['caption']?>">
+                        <img style="width: 100%; height: 100%;" src="<?= $slider['sizes']['large']?>" alt="<?= $slider['title']?>">
                     </a>
                 </div>
-                <div class="slider__item">
-                    <a href="#">
-                        <img style="width: 100%; height: 100%;" src="assets/images/BocThamMienPhi_1025x511.jpg" alt="">
-                    </a>
-                </div>
+                <?php endforeach; endif; ?>
             </div>
         </div> 
     </section>
@@ -74,7 +72,18 @@
             </ul>
         </div>
     </section>
-        <!--Product type 3 -->
+
+        <?php $promotions = get_posts(array(
+                'post_type' => 'product',
+                'posts_per_page' => 7,
+                'meta_query' => array(
+                    array(
+                        'key' => '_sale_price',
+                        'value' => 0,
+                        'compare' => '>=',
+                    )
+                )
+        )) ?>
         <section class="product product-type3 mb-2">
             <div class="container bg-white">
                 <div class="row">
@@ -88,92 +97,134 @@
                 <div class="row">
                     <div class="col-12">
                         <div style="width: 100%" data-flickity='{ "draggable": false, "contain": true , "pageDots": false } '>
-                            <?php
-                                for($i = 0; $i <=8 ; $i++){
-                                    echo '
-                                    <div class="product__item product__item-slider">
-                                        <a class="product__link" href="#">
-                                            <div class="product__img">
-                                                <img src="assets/images/combo-viglacera-4-1.jpg" alt="" class="img-fluid">
-                                            </div>
-                                            <div class="product__discount">-40%</div>
-                                            <div class="product__name">Chậu lavabo dương bàn Viglacera V25</div>
-                                            <span class="product__price">
-                                                <del>
-                                                    <span>Giá NY: 13.750.000 vnđ</span>
-                                                </del>
-                                                <ins>
-                                                    <span>Giá 680.000 vnđ </span>
-                                                </ins>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    ';
-                                } 
+                            <?php if(!empty($promotions)){
+                                foreach ($promotions as $item){
+                                    get_template_part('templates/product','item',['item'=>$item]);
+                                }
+                            }
                             ?>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--End product type 3-->
-        <!-- Product type 1-->
-        <section class="product product-type1 mb-2">
-            <div class="container bg-white">
-                <div class="row">
-                    <div class="col-lg-12 no-gutters-col">
-                        <div class="product-tab__box d-none d-lg-block">
-                            <ul class="product-tab">
-                                <h2 class="product-tab__title">
-                                    <a href="#">
-                                        <?php echo hanzo_svg('menu-button-of-three-horizontal-lines','18')?>Thiết bị nhà bếp
-                                    </a>
-                                </h2>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>   
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                            </ul>
-                            <a href="#" class="product__link-more">Xem thêm ▼</a>
-                        </div>
-                        <div class="product-tab__mb d-lg-none">
-                            <div class="product-tab__mb-box">
-                                <h3 class="product-tab__mb-title">THIẾT BỊ NHÀ BẾP</h3>
-                                <a href="#">Xem nhanh</a>
-                            </div>
-                            <ul class="product-tab__mb-list">
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 no-gutters-col product__grid d-none d-lg-block">
-                        <div class="product-brand">
-                            <ul class="product-brand__list">
-                                <?php
-                                    for($i = 0; $i<= 8; $i++){
-                                        echo '
+        <?php
+           $home_cats = get_field('home_categories','option');
+           if(!empty($home_cats)): foreach ($home_cats as $k => $cat):
+               $cat_ob = get_term($cat,'product_cat');
+               if($k==1):
+                   ?>
+                   <section class="product product-type2 mb-2">
+                   <div class="container bg-white">
+                       <div class="row">
+                           <div class="col-lg-12 no-gutters-col">
+                               <div class="product-tab__box d-none d-lg-block">
+                                   <ul class="product-tab">
+                                       <h2 class="product-tab__title">
+                                           <a href="<?= get_term_link($cat_ob,'product_cat')?>">
+                                               <?php echo hanzo_svg('menu-button-of-three-horizontal-lines','18')?><?= $cat_ob->name ?>
+                                           </a>
+                                       </h2>
+                                   </ul>
+                                   <a href="<?= get_term_link($cat_ob,'product_cat')?>" class="product__link-more">Xem thêm ▼</a>
+                               </div>
+                               <div class="product-tab__mb d-lg-none">
+                                   <div class="product-tab__mb-box">
+                                       <h3 class="product-tab__mb-title text-uppercase"><?= $cat_ob->name ?></h3>
+                                       <a href="<?= get_term_link($cat_ob,'product_cat')?>">Xem nhanh</a>
+                                   </div>
+                                   <?php $childs = get_term_children($cat_ob->term_id,'product_cat');if(!empty($childs)):?>
+                                   <ul class="product-tab__mb-list">
+                                        <?php foreach ($childs as $child):?>
+                                       <li><a href="<?= get_term_link($child,'product_cat')?>"><?= get_term_by('term_id',$child,'product_cat')->name?></a></li>
+                                        <?php endforeach;?>
+                                   </ul>
+                                    <?php endif;?>
+                               </div>
+                           </div>
+                       </div>
+                       <?php $pro_cats = get_posts(array(
+                               'post_type' => 'product',
+                                'posts_per_page' => 10,
+                                'tax_query' => array(
+                                        array(
+                                                'taxonomy' => 'product_cat',
+                                                'field' => 'term_id',
+                                                'terms' => $cat
+                                        )
+                                )
+                       ));?>
+                       <div class="row">
+                           <div class="col-12">
+                               <div class="product-type2__list" data-flickity='{"draggable": true ,"freeScroll": true, "wrapAround": true }'>
+                                   <?php if(!empty($pro_cats)){
+                                       foreach ($pro_cats as $item){
+                                           get_template_part('templates/product','item',['item'=>$item]);
+                                       }
+                                   }
+                                   ?>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   </section>
+           <?php else:?>
+                   <section class="product product-type1 mb-2">
+                       <div class="container bg-white">
+                           <div class="row">
+                               <div class="col-lg-12 no-gutters-col">
+                                   <div class="product-tab__box d-none d-lg-block">
+                                       <ul class="product-tab">
+                                           <h2 class="product-tab__title">
+                                               <a href="<?= get_term_link($cat_ob,'product_cat')?>">
+                                                   <?php echo hanzo_svg('menu-button-of-three-horizontal-lines','18')?><?= $cat_ob->name?>
+                                               </a>
+                                           </h2>
+                                           <?php $childs = get_term_children($cat_ob->term_id,'product_cat');?>
+                                           <?php foreach ($childs as $child):?>
+                                               <a class="product-tab__link btn" href="<?= get_term_link($child,'product_cat')?>"><?= get_term_by('term_id',$child,'product_cat')->name?></a>
+                                           <?php endforeach;?>
+                                       </ul>
+                                       <a href="<?= get_term_link($cat_ob,'product_cat')?>" class="product__link-more">Xem thêm ▼</a>
+                                   </div>
+                                   <div class="product-tab__mb d-lg-none">
+                                       <div class="product-tab__mb-box">
+                                           <h3 class="product-tab__mb-title">THIẾT BỊ NHÀ BẾP</h3>
+                                           <a href="<?= get_term_link($cat_ob,'product_cat')?>">Xem nhanh</a>
+                                       </div>
+                                       <?php if(!empty($childs)):?>
+                                           <ul class="product-tab__mb-list">
+                                               <?php foreach ($childs as $child):?>
+                                                   <li><a href="<?= get_term_link($child,'product_cat')?>"><?= get_term_by('term_id',$child,'product_cat')->name?></a></li>
+                                               <?php endforeach;?>
+                                           </ul>
+                                       <?php endif;?>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-lg-3 no-gutters-col product__grid d-none d-lg-block">
+                                   <div class="product-brand">
+                                       <ul class="product-brand__list">
+                                           <?php
+                                           for($i = 0; $i<= 8; $i++){
+                                               echo '
                                             <li><a href="#">Taka</a></li>
                                         ';
-                                    }
-                                ?>
-                            </ul>
-                        </div>
-                        <div class="product-brand__img">
-                            <img src="assets/images/phoi-canh-category-gach-lat-nen.jpg" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-9 ">
-                        <div class="product__content">
-                            <div class="product__list">
-                                <?php
-                                    for($i = 1; $i <=8; $i++){
-                                        echo '
+                                           }
+                                           ?>
+                                       </ul>
+                                   </div>
+                                   <div class="product-brand__img">
+                                       <img src="assets/images/phoi-canh-category-gach-lat-nen.jpg" alt="" class="img-fluid">
+                                   </div>
+                               </div>
+                               <div class="col-lg-9 ">
+                                   <div class="product__content">
+                                       <div class="product__list">
+                                           <?php
+                                           for($i = 1; $i <=8; $i++){
+                                               echo '
                                             <div class="product__item">
                                                 <a class="product__link" href="#">
                                                     <div class="product__img">
@@ -189,163 +240,16 @@
                                                 </a>
                                             </div>
                                         ';
-                                    }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Product type 1-->
-        <!-- Product type 2 -->
-        <section class="product product-type2 mb-2">
-            <div class="container bg-white">
-                <div class="row">
-                    <div class="col-lg-12 no-gutters-col">
-                        <div class="product-tab__box d-none d-lg-block">
-                            <ul class="product-tab">
-                                <h2 class="product-tab__title">
-                                    <a href="#">
-                                        <?php echo hanzo_svg('menu-button-of-three-horizontal-lines','18')?>Tủ chậu
-                                    </a>
-                                </h2>
-                            </ul>
-                            <a href="#" class="product__link-more">Xem thêm ▼</a>
-                        </div>
-                        <div class="product-tab__mb d-lg-none">
-                            <div class="product-tab__mb-box">
-                                <h3 class="product-tab__mb-title">TỦ CHẬU</h3>
-                                <a href="#">Xem nhanh</a>
-                            </div>
-                            <ul class="product-tab__mb-list">
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product-type2__list" data-flickity='{"draggable": true ,"freeScroll": true, "wrapAround": true }'>
-                            <?php
-                                for($i = 0; $i <=8 ; $i++){
-                                    echo '
-                                    <div class="product__item product__item-slider">
-                                        <a class="product__link" href="#">
-                                            <div class="product__img">
-                                                <img src="assets/images/combo-viglacera-4-1.jpg" alt="" class="img-fluid">
-                                            </div>
-                                            <div class="product__discount">-40%</div>
-                                            <div class="product__name">Chậu lavabo dương bàn Viglacera V25</div>
-                                            <span class="product__price">
-                                                <del>
-                                                    <span>Giá NY: 13.750.000 vnđ</span>
-                                                </del>
-                                                <ins>
-                                                    <span>Giá 680.000 vnđ </span>
-                                                </ins>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    ';
-                                } 
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--End product type 2 -->
-        <!-- Product type 1-->
-        <section class="product product-type1 mb-2">
-            <div class="container bg-white">
-                <div class="row">
-                    <div class="col-lg-12 no-gutters-col">
+                                           }
+                                           ?>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </section>
+           <?php endif; endforeach; endif;?>
 
-                        <div class="product-tab__box d-none d-lg-block">
-                            <ul class="product-tab">
-                                <h2 class="product-tab__title">
-                                    <a href="#">
-                                        <?php echo hanzo_svg('menu-button-of-three-horizontal-lines','18')?>Thiết bị nhà bếp
-                                    </a>
-                                </h2>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                                <a class="product-tab__link btn" href="#">Vòi rửa bát</a>
-                            </ul>
-                            <a href="#" class="product__link-more">Xem thêm ▼</a>
-                        </div>
-                        
-                        <div class="product-tab__mb d-lg-none">
-                            <div class="product-tab__mb-box">
-                                <h3 class="product-tab__mb-title">THIẾT BỊ VỆ SINH</h3>
-                                <a href="#">Xem nhanh</a>
-                            </div>
-                            <ul class="product-tab__mb-list">
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                                <li><a href="#">Sen tắm</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 no-gutters-col product__grid d-none d-lg-block">
-                        <div class="product-brand">
-                            <ul class="product-brand__list">
-                                <?php
-                                    for($i = 0; $i<= 8; $i++){
-                                        echo '
-                                            <li><a href="#">Taka</a></li>
-                                        ';
-                                    }
-                                ?>
-                            </ul>
-                        </div>
-                        <div class="product-brand__img">
-                            <img src="assets/images/phoi-canh-category-gach-lat-nen.jpg" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-9 ">
-                        <div class="product__content">
-                            <div class="product__list">
-                                <?php
-                                    for($i = 1; $i <=8; $i++){
-                                        echo '
-                           
-                                            <div class="product__item">
-                                                <a class="product__link" href="#">
-                                                    <div class="product__img">
-                                                        <img src="assets/images/voi-rua-bat-cata-cma.jpg" alt="" class="img-fluid">
-                                                    </div>
-                                                    <div class="product__discount">-40%</div>
-                                                    <div class="product__name">Chậu lavabo dương bàn Viglacera V25</div>
-                                                    <span class="product__price">
-                                                    <del>
-                                                        <span>Giá NY: 13.750.000 vnđ</span>
-                                                    </del>
-                                                    <ins>
-                                                        <span>Giá 680.000 vnđ </span>
-                                                    </ins>
-                                                </span>
-                                                </a>
-                                            </div>
-                                        ';
-                                    };
-                                ?>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Product type 1-->
         <!-- New -->
         <section class="new mb-2">
             <div class="container bg-white">

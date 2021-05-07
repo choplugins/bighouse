@@ -1,0 +1,9 @@
+2021-05-07T08:39:23+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function get_term_field(), 1 passed in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouse/index.php on line 139 and at least 2 expected in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/taxonomy.php:1098
+Stack trace:
+#0 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-content/themes/bighouse/index.php(139): get_term_field(40)
+#1 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/template-loader.php(106): include('/Volumes/MACDAT...')
+#2 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-blog-header.php(19): require_once('/Volumes/MACDAT...')
+#3 /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/index.php(17): require('/Volumes/MACDAT...')
+#4 {main}
+  thrown in /Volumes/MACDATA/Projects/webserver/worpdress/bighouse/wp-includes/taxonomy.php on line 1098
+
