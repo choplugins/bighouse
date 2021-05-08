@@ -51,7 +51,7 @@ $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
                     </div>
         
                     <div class="header-center__shortcut">
-                        <a href="#" class="header-center__shortcut-item btn" title="Tài khoản">
+                        <a href="<?= get_permalink( wc_get_page_id( 'myaccount' ) ) ?>" class="header-center__shortcut-item btn" title="Tài khoản">
                             <svg width="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 460.8 460.8" style="enable-background:new 0 0 460.8 460.8;" xml:space="preserve"><path d="M230.432,0c-65.829,0-119.641,53.812-119.641,119.641s53.812,119.641,119.641,119.641s119.641-53.812,119.641-119.641
                                         S296.261,0,230.432,0z"/>
@@ -65,7 +65,7 @@ $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
                                 </svg>
                             Tài khoản
                         </a>
-                        <a href="#" class="header-center__shortcut-item btn " title="Giỏ hàng">
+                        <a href="<?= wc_get_cart_url()?>" class="header-center__shortcut-item btn " title="Giỏ hàng">
                             <svg width="14px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     viewBox="0 0 511.997 511.997" style="enable-background:new 0 0 511.997 511.997;" xml:space="preserve"><path d="M405.387,362.612c-35.202,0-63.84,28.639-63.84,63.84s28.639,63.84,63.84,63.84s63.84-28.639,63.84-63.84
                                             S440.588,362.612,405.387,362.612z M405.387,451.988c-14.083,0-25.536-11.453-25.536-25.536s11.453-25.536,25.536-25.536
@@ -76,7 +76,7 @@ $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
                                             S208.847,362.612,173.646,362.612z M173.646,451.988c-14.083,0-25.536-11.453-25.536-25.536s11.453-25.536,25.536-25.536
                                             s25.536,11.453,25.536,25.536S187.729,451.988,173.646,451.988z"/>
                                 </svg>
-                            Giỏ hàng (0)</a>
+                            Giỏ hàng (<?= WC()->cart->get_cart_contents_count()?>)</a>
                     </div>
                 </div>
             </div>

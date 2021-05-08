@@ -189,7 +189,7 @@
                                    </div>
                                    <div class="product-tab__mb d-lg-none">
                                        <div class="product-tab__mb-box">
-                                           <h3 class="product-tab__mb-title">THIẾT BỊ NHÀ BẾP</h3>
+                                           <h3 class="product-tab__mb-title"><?= $cat_ob->name?></h3>
                                            <a href="<?= get_term_link($cat_ob,'product_cat')?>">Xem nhanh</a>
                                        </div>
                                        <?php if(!empty($childs)):?>
@@ -202,44 +202,47 @@
                                    </div>
                                </div>
                            </div>
+
                            <div class="row">
                                <div class="col-lg-3 no-gutters-col product__grid d-none d-lg-block">
+                                   <?php
+                                   $brands = hanzo_get_brand_from_product_category($cat_ob->term_id);
+                                   if(!empty($brands)):
+                                   ?>
                                    <div class="product-brand">
                                        <ul class="product-brand__list">
-                                           <?php
-                                           for($i = 0; $i<= 8; $i++){
-                                               echo '
-                                            <li><a href="#">Taka</a></li>
-                                        ';
-                                           }
-                                           ?>
+
+                                            <?php foreach ($brands as $brand):?>
+
+                                            <li><a href="<?= get_term_link($brand->slug,'pwb-brand')?>"><?= $brand->name?></a></li>
+
+                                           <?php endforeach;?>
                                        </ul>
                                    </div>
+                                   <?php endif ?>
                                    <div class="product-brand__img">
-                                       <img src="assets/images/phoi-canh-category-gach-lat-nen.jpg" alt="" class="img-fluid">
+                                       <?php $thumbnail_id = get_term_meta($cat_ob->term_id, 'thumbnail_id', true); ?>
+                                       <img src="<?= wp_get_attachment_image_src( $thumbnail_id,'large' )[0]?>" alt="" class="img-fluid">
                                    </div>
                                </div>
+                               <?php $pro_cats = get_posts(array(
+                                   'post_type' => 'product',
+                                   'posts_per_page' => 10,
+                                   'tax_query' => array(
+                                       array(
+                                           'taxonomy' => 'product_cat',
+                                           'field' => 'term_id',
+                                           'terms' => $cat
+                                       )
+                                   )
+                               ));?>
                                <div class="col-lg-9 ">
                                    <div class="product__content">
                                        <div class="product__list">
-                                           <?php
-                                           for($i = 1; $i <=8; $i++){
-                                               echo '
-                                            <div class="product__item">
-                                                <a class="product__link" href="#">
-                                                    <div class="product__img">
-                                                        <img src="assets/images/voi-rua-bat-cata-cma.jpg" alt="" class="img-fluid">
-                                                    </div>
-                                                    <div class="product__discount">-40%</div>
-                                                    <div class="product__name">Chậu lavabo dương bàn Viglacera V25</div>
-                                                    <span class="product__price">
-                                                        <ins>
-                                                            <span>Giá 680.000 vnđ </span>
-                                                        </ins>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        ';
+                                           <?php if(!empty($pro_cats)){
+                                               foreach ($pro_cats as $item){
+                                                   get_template_part('templates/product','grid',['item'=>$item]);
+                                               }
                                            }
                                            ?>
                                        </div>
@@ -250,7 +253,22 @@
                    </section>
            <?php endif; endforeach; endif;?>
 
-        <!-- New -->
+        <?php
+            $projects = get_posts(
+                    array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 4,
+                            'category_name' => 'du-an'
+                    )
+            );
+            $news = get_posts(
+                array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 4,
+                    'category_name' => 'tin-tuc'
+                )
+            );
+        ?>
         <section class="new mb-2">
             <div class="container bg-white">
                <div class="row">
@@ -261,122 +279,36 @@
                                 <h3 class="new__title">DỰ ÁN ĐÃ LÀM</h3>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="new-construction__box">
-                                        <a href="">
-                                            <div class="new-construction__img">
-                                                <img src="assets/images/du-an-tech-444x273.jpg" alt="">
-                                            </div>
-                                            <div class="new-construction__text">
-                                                <h4 class="new-construction__title">Dự án Stech, KCN Bỉm Sơn, Thị xã Bỉm Sơn, Thanh Hóa</h4>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="new-construction__box">
-                                        <a href="">
-                                            <div class="new-construction__img">
-                                                <img src="assets/images/du-an-tech-444x273.jpg" alt="">
-                                            </div>
-                                            <div class="new-construction__text">
-                                                <h4 class="new-construction__title">Dự án Stech, KCN Bỉm Sơn, Thị xã Bỉm Sơn, Thanh Hóa</h4>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="new-construction__box">
-                                        <a href="">
-                                            <div class="new-construction__img">
-                                                <img src="assets/images/du-an-tech-444x273.jpg" alt="">
-                                            </div>
-                                            <div class="new-construction__text">
-                                                <h4 class="new-construction__title">Dự án Stech, KCN Bỉm Sơn, Thị xã Bỉm Sơn, Thanh Hóa</h4>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="new-construction__box">
-                                        <a href="">
-                                            <div class="new-construction__img">
-                                                <img src="assets/images/du-an-tech-444x273.jpg" alt="">
-                                            </div>
-                                            <div class="new-construction__text">
-                                                <h4 class="new-construction__title">Dự án Stech, KCN Bỉm Sơn, Thị xã Bỉm Sơn, Thanh Hóa</h4>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                <?php if(!empty($projects)): foreach ($projects as $project):?>
+                                <?php get_template_part('templates/post','grid',['class'=>'col-lg-6 col-sm-6','post'=>$project])?>
+                                <?php endforeach; endif; ?>
 
                             </div>
-                            <a class="new-construction__link-more" href="#">Xem thêm ▼</a>
+                            <a class="new-construction__link-more" href="<?= get_term_link('du-an','category')?>">Xem thêm ▼</a>
                         </div>
                     </div>
                     <div class="new-grid__item">
                         <div class="new-post__data">
                             <div class="new__board">
-                                <h3 class="new__title">DỰ ÁN ĐÃ LÀM</h3>
+                                <h3 class="new__title">TIN TỨC & SỰ KIỆN</h3>
                             </div>
-
                             <ul class="new-post__list">
+                                <?php if(!empty($news)): foreach ($news as $item):?>
                                 <li>
-                                    <div class="new-post__item">
-                                        <div class="new-post__img">
-                                            <img src="assets/images/gach-Dong-Tam-loai-2-2-444x444.jpg" alt="">
-                                        </div>
-                                        <div class="new-post__info">
-                                            <div class="new-post__title"><a href="#">Cách phân biệt gạch Đồng Tâm loại 2 với loại 1 (Gạch Đồng Tâm A và AA)</a></div>
-                                            <div class="new-post__date">12-4-2021</div>
-                                        </div>
-                                    </div>
+                                    <?php get_template_part('templates/post','list',['post'=>$item])?>
                                 </li>
-                                <li>
-                                    <div class="new-post__item">
-                                        <div class="new-post__img">
-                                            <img src="assets/images/gach-Dong-Tam-loai-2-2-444x444.jpg" alt="">
-                                        </div>
-                                        <div class="new-post__info">
-                                            <div class="new-post__title"><a href="#">Cách phân biệt gạch Đồng Tâm loại 2 với loại 1 (Gạch Đồng Tâm A và AA)</a></div>
-                                            <div class="new-post__date">12-4-2021</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="new-post__item">
-                                        <div class="new-post__img">
-                                            <img src="assets/images/gach-Dong-Tam-loai-2-2-444x444.jpg" alt="">
-                                        </div>
-                                        <div class="new-post__info">
-                                            <div class="new-post__title"><a href="#">Cách phân biệt gạch Đồng Tâm loại 2 với loại 1 (Gạch Đồng Tâm A và AA)</a></div>
-                                            <div class="new-post__date">12-4-2021</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="new-post__item">
-                                        <div class="new-post__img">
-                                            <img src="assets/images/gach-Dong-Tam-loai-2-2-444x444.jpg" alt="">
-                                        </div>
-                                        <div class="new-post__info">
-                                            <div class="new-post__title"><a href="#">Cách phân biệt gạch Đồng Tâm loại 2 với loại 1</a></div>
-                                            <div class="new-post__date">12-4-2021</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                                <?php endforeach; endif; ?>
 
-                            <a class="new-construction__link new-construction__link-more" href="#">Xem thêm ▼</a>
+                            </ul>
+                            <a class="new-construction__link new-construction__link-more" href="<?= get_term_link('tin-tuc','category')?>">Xem thêm ▼</a>
                         </div>
                     </div>
                 </div>
                </div>
             </div>
         </section>
-        <!-- End New -->
-        
-        <!-- Partner -->
+
+        <?php $clients = get_field('clients','option')?>
         <section class="partner">
             <div class="partner__bg">
                 <div class="container">
@@ -386,51 +318,11 @@
             <div class="container">
                 <div class="row">
                     <div class="partner__list" data-flickity='{ "contain": true , "cellAlign": "left", "prevNextButtons":false,"pageDots":false,"autoPlay": 2500 }'>
+                        <?php if(!empty($clients)): foreach ($clients as $client):?>
                         <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
+                            <img src="<?= $client['sizes']['large']?>" alt="<?= $client['title']?>">
                         </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
-                        <div class="partner__item">
-                            <img src="assets/images/doi-tac-3.jpg" alt="">
-                        </div>
+                        <?php endforeach; endif;?>
 
                     </div>
                 </div>

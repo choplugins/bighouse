@@ -38,6 +38,7 @@ add_theme_support('title-tag');
 add_theme_support('menus');
 add_theme_support('post-thumbnails');
 add_theme_support('customize-selective-refresh-widgets');
+add_theme_support( 'woocommerce' );
 
 function hanzo_widgets_init() {
     register_sidebar( array(
@@ -94,6 +95,15 @@ function hanzo_widgets_init() {
         'before_title'  => '<h2 class="widgettitle footer-top__title">',
         'after_title'   => '</h2>',
     ) );
+    register_sidebar( array(
+        'name'          => __( 'Product Category', 'hanzo' ),
+        'id'            => 'product-category',
+        'description'   => __( 'Widgets Product Category', 'hanzo' ),
+        'before_widget' => '<div id="%1$s" class="widget sidebar__item">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widgettitle sidebar__title text-uppercase">',
+        'after_title'   => '</h2>',
+    ) );
 }
 add_action( 'widgets_init', 'hanzo_widgets_init' );
 
@@ -106,24 +116,19 @@ if (function_exists('acf_add_options_page')) {
         'redirect' => false
     ));
 }
-function hanzo_get_brand_from_product_category( $cat_slug, $taxonomy = 'pwb-brand' ) {
+function hanzo_get_brand_from_product_category( $cat_term_id, $taxonomy = 'product_cat' ) {
     global $wpdb;
 
     return $wpdb->get_results( "
-        SELECT t1.*
+        SELECT DISTINCT  t1.*
         FROM    {$wpdb->prefix}terms t1
-        INNER JOIN {$wpdb->prefix}term_taxonomy tt1
-            ON  t1.term_id = tt1.term_id 
-        INNER JOIN {$wpdb->prefix}term_relationships tr1
-            ON  tt1.term_taxonomy_id = tr1.term_taxonomy_id
-        INNER JOIN {$wpdb->prefix}term_relationships tr2
-            ON  tr1.object_id = tr2.object_id
-        INNER JOIN {$wpdb->prefix}term_taxonomy tt2
-            ON  tr2.term_taxonomy_id = tt2.term_taxonomy_id         
-        INNER JOIN {$wpdb->prefix}terms t2
-            ON  tt2.term_id = t2.term_id
-        WHERE tt1.taxonomy = 'product_cat'
-        AND tt2.taxonomy = '$taxonomy'
-        AND  t2.slug = '$cat_slug'
+        INNER JOIN {$wpdb->prefix}term_taxonomy tt1 ON  t1.term_id = tt1.term_id 
+        INNER JOIN {$wpdb->prefix}term_relationships tr1 ON  tt1.term_taxonomy_id = tr1.term_taxonomy_id
+        INNER JOIN {$wpdb->prefix}term_relationships tr2 ON  tr1.object_id = tr2.object_id
+        INNER JOIN {$wpdb->prefix}term_taxonomy tt2 ON  tr2.term_taxonomy_id = tt2.term_taxonomy_id         
+        INNER JOIN {$wpdb->prefix}terms t2 ON  tt2.term_id = t2.term_id
+        WHERE tt1.taxonomy = 'pwb-brand'
+        AND  t2.term_id = '$cat_term_id'
+        AND  tt2.taxonomy = '$taxonomy'
     " );
 }

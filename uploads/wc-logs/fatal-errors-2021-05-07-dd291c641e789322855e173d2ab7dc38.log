@@ -1,0 +1,16 @@
+2021-05-07T14:53:50+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in D:\Projects\Wordpress\bighouse\wp-content\themes\bighouse\index.php:217
+Stack trace:
+#0 D:\Projects\Wordpress\bighouse\wp-includes\template-loader.php(106): include()
+#1 D:\Projects\Wordpress\bighouse\wp-blog-header.php(19): require_once('D:\\Projects\\Wor...')
+#2 D:\Projects\Wordpress\bighouse\index.php(17): require('D:\\Projects\\Wor...')
+#3 {main}
+  thrown in D:\Projects\Wordpress\bighouse\wp-content\themes\bighouse\index.php on line 217
+
+2021-05-07T14:54:36+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in D:\Projects\Wordpress\bighouse\wp-content\themes\bighouse\index.php:218
+Stack trace:
+#0 D:\Projects\Wordpress\bighouse\wp-includes\template-loader.php(106): include()
+#1 D:\Projects\Wordpress\bighouse\wp-blog-header.php(19): require_once('D:\\Projects\\Wor...')
+#2 D:\Projects\Wordpress\bighouse\index.php(17): require('D:\\Projects\\Wor...')
+#3 {main}
+  thrown in D:\Projects\Wordpress\bighouse\wp-content\themes\bighouse\index.php on line 218
+

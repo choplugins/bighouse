@@ -20,6 +20,24 @@
             }
         }
     }
+    .wp-pagenavi{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a,span{
+            border: 1px solid #183c30;
+            margin: 0 4px 7px;
+            display: block;
+            padding: 6px 15px;
+            background: var(--bg-white);
+            color: var(--color-text);
+            transition: .4s;
+            &:hover{
+                background: var(--first-color-alt);
+                color: var(--color-light);
+            }
+        }
+    }
     .active{
         a{
             background: var(--first-color-alt);
